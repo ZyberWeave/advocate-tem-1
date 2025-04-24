@@ -4,6 +4,28 @@ import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
 
 export default function Contact() {
+  // Random office locations
+  const officeLocations = [
+    {
+      city: "New York",
+      address: "123 Legal Avenue, Suite 500",
+      coordinates: "40.7128° N, 74.0060° W"
+    },
+    {
+      city: "London",
+      address: "456 Justice Lane, Floor 3",
+      coordinates: "51.5074° N, 0.1278° W"
+    },
+    {
+      city: "Mumbai",
+      address: "789 Law Chambers, Nariman Point",
+      coordinates: "19.0760° N, 72.8777° E"
+    }
+  ];
+
+  // Select a random location
+  const randomLocation = officeLocations[Math.floor(Math.random() * officeLocations.length)];
+
   return (
     <ParallaxProvider>
       <section id="contact" className="relative min-h-screen py-20 px-4 sm:px-8 overflow-hidden">
@@ -117,17 +139,17 @@ export default function Contact() {
                 <div className="space-y-6 flex-grow">
                   <div className="flex items-start">
                     <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
-                      <FaMapMarkerAlt  size={20}/>
+                      <FaMapMarkerAlt className="text-blue-600" size={20} />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Office Address</h4>
-                      <p className="text-gray-600">123 Legal Avenue, Suite 500<br />New York, NY 10001</p>
+                      <p className="text-gray-600">{randomLocation.address}<br />{randomLocation.city}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
                     <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
-                    <FaPhone size={20} />
+                      <FaPhone className="text-blue-600" size={20} />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
@@ -137,7 +159,7 @@ export default function Contact() {
                   
                   <div className="flex items-start">
                     <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
-                    <FaEnvelope size={20} />
+                      <FaEnvelope className="text-blue-600" size={20} />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
@@ -147,7 +169,7 @@ export default function Contact() {
                   
                   <div className="flex items-start">
                     <div className="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
-                    <FaClock size={20} />
+                      <FaClock className="text-blue-600" size={20} />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 mb-1">Office Hours</h4>
@@ -160,15 +182,14 @@ export default function Contact() {
                   <h4 className="font-semibold text-gray-900 mb-3">Emergency Contact</h4>
                   <p className="text-gray-600 mb-4">For urgent legal matters outside business hours:</p>
                   <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
-  <span className="mr-2"><FaPhone size={16} /></span>
-  Emergency Legal Assistance
-</button>
+                    <FaPhone className="mr-2" size={16} />
+                    Emergency Legal Assistance
+                  </button>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Map Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -176,18 +197,32 @@ export default function Contact() {
             viewport={{ once: true }}
             className="mt-16 bg-white rounded-xl shadow-lg overflow-hidden"
           >
-            <div className="h-64 md:h-96 w-full bg-gray-200 relative">
-              {/* Map placeholder - replace with actual map component */}
-              <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-  <span className="text-red-500 mx-auto mb-2 block"><FaMapMarkerAlt size={40} /></span>
-  <p className="text-gray-700 font-medium">Map would be displayed here</p>
-</div>
-              </div>
+            <div className="h-64 md:h-96 w-full relative">
+              <iframe
+                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.8977695496613!2d72.82885067499837!3d19.076045982159753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8866a456c9f%3A0x8d1745d15baac575!2sMumbai%2C%20Maharashtra%20400001!5e0!3m2!1sen!2sin!4v1709697436044!5m2!1sen!2sin`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-t-xl"
+              ></iframe>
             </div>
             <div className="p-6 border-t border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-2">Our Office Location</h3>
-              <p className="text-gray-600">Easy to find in downtown Manhattan with convenient parking and public transit options.</p>
+              <p className="text-gray-600">
+                123 Legal Avenue, Suite 500<br />
+                Mumbai, Maharashtra 400001<br />
+                <a 
+                  href="https://maps.app.goo.gl/ukrrLC7zU422JQReA" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline mt-2 inline-block"
+                >
+                  View on Google Maps
+                </a>
+              </p>
             </div>
           </motion.div>
         </div>

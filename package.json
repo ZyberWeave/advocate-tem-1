@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.7",
+    "@react-three/fiber": "^9.1.2",
     "@tsparticles/react": "^3.0.0",
     "autoprefixer": "^10.4.21",
     "framer-motion": "^12.9.1",
@@ -21,6 +23,7 @@
     "react-scroll": "^1.9.3",
     "react-scroll-parallax": "^3.4.5",
     "react-tsparticles": "^2.12.2",
+    "three": "^0.176.0",
     "tsparticles": "^3.8.1",
     "tsparticles-engine": "^2.12.0"
   },

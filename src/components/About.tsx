@@ -180,40 +180,60 @@ export default function About() {
           </div>
         </div>
 
-        {/* Timeline */}
-        <div className="max-w-4xl mx-auto mt-24 relative z-10">
-          <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            Professional Journey
-          </h3>
-          
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 h-full w-0.5 bg-gradient-to-b from-blue-200 to-blue-100 transform -translate-x-1/2"></div>
+    {/* Timeline */}
+<div className="max-w-4xl mx-auto mt-24 relative z-10">
+  <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+    Professional Journey
+  </h3>
+  
+  <div className="relative">
+    {/* Timeline line */}
+    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 to-blue-100 transform -translate-x-1/2"></div>
+    
+    {/* Timeline items */}
+    <div className="space-y-16">
+      {timelineItems.map((item, index) => (
+        <motion.div
+          key={index}
+          className="relative w-full"
+          initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+        >
+          <div className="flex w-full items-center"> {/* Added items-center here */}
+            {/* Left content (for even indexes) */}
+            <div className={`w-[45%] ${index % 2 === 0 ? 'pr-4' : 'invisible'}`}>
+              {index % 2 === 0 && (
+                <div className="p-6 rounded-xl text-right">
+                  <h4 className="text-xl font-bold text-gray-900">{item.year}</h4>
+                  <p className="text-gray-700">{item.title}</p>
+                  <p className="text-gray-500">{item.description}</p>
+                </div>
+              )}
+            </div>
             
-            {/* Timeline items */}
-            <div className="space-y-12">
-              {timelineItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="relative"
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <div className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center`}>
-                    <div className={`flex-1 p-6 rounded-xl ${index % 2 === 0 ? 'mr-8 text-right' : 'ml-8'}`}>
-                      <h4 className="text-xl font-bold text-gray-900">{item.year}</h4>
-                      <p className="text-gray-700">{item.title}</p>
-                      <p className="text-gray-500">{item.description}</p>
-                    </div>
-                    <div className="w-6 h-6 bg-blue-900 rounded-full border-4 border-white shadow-lg"></div>
-                  </div>
-                </motion.div>
-              ))}
+            {/* Center dot - takes up 10% width */}
+            <div className="w-[10%] flex justify-center">
+              <div className="w-6 h-6 bg-blue-900 rounded-full border-4 border-white shadow-lg z-10"></div>
+            </div>
+            
+            {/* Right content (for odd indexes) */}
+            <div className={`w-[45%] ${index % 2 !== 0 ? 'pl-4' : 'invisible'}`}>
+              {index % 2 !== 0 && (
+                <div className="p-6 rounded-xl text-left">
+                  <h4 className="text-xl font-bold text-gray-900">{item.year}</h4>
+                  <p className="text-gray-700">{item.title}</p>
+                  <p className="text-gray-500">{item.description}</p>
+                </div>
+              )}
             </div>
           </div>
-        </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</div>
       </section>
 
       <style jsx global>{`

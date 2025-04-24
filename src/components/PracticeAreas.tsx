@@ -63,10 +63,8 @@ export default function PracticeAreas() {
               >
                 {/* Icon Header */}
                 <div className="bg-blue-600 p-6 text-white">
-                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto">
-                  <span className="w-6 h-6 text-white">
-+   <area.icon size={24} />
-+ </span>{/* Added icon inside the circle */}
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto">
+                    <area.icon className="text-blue-600 text-xl" />
                   </div>
                 </div>
                 

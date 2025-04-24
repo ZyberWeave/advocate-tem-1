@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaPhoneAlt } from 'react-icons/fa';
+import { FaBars, FaTimes, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,15 +79,26 @@ export default function Navbar() {
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-900 transition-all group-hover:w-full"></span>
               </Link>
             ))}
-            <motion.a
-              href="tel:+919130332780"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
-            >
-              <span className="text-sm"><FaPhoneAlt size={16} /></span>
-              <span className="text-sm font-medium">+91 91303 32780</span>
-            </motion.a>
+            <div className="flex items-center gap-4">
+              <motion.a
+                href="tel:+919130332780"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
+              >
+                <FaPhoneAlt size={14} />
+                <span className="text-sm font-medium">+91 91303 32780</span>
+              </motion.a>
+              <motion.a
+                href="mailto:contact@mayurbadrelaw.com"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 bg-white text-blue-900 border border-blue-900 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors"
+              >
+                <FaEnvelope size={14} />
+                <span className="text-sm font-medium">Email Us</span>
+              </motion.a>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -96,11 +107,7 @@ export default function Navbar() {
             className="md:hidden text-gray-700 focus:outline-none"
             aria-label="Toggle menu"
           >
-            {isOpen ? (
-              <FaTimes size={24} />    // no className, use size prop
-            ) : (
-              <FaBars size={24} />     // likewise here
-            )}
+            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
 
@@ -129,13 +136,22 @@ export default function Navbar() {
                     {link.name}
                   </Link>
                 ))}
-                <a
-                  href="tel:+919130332780"
-                  className="flex items-center gap-2 bg-blue-900 text-white px-4 py-3 rounded-lg hover:bg-blue-800 transition-colors mt-4"
-                >
-                  <FaPhoneAlt />
-                  Call Now: +91 91303 32780
-                </a>
+                <div className="space-y-3 mt-4">
+                  <a
+                    href="tel:+919130332780"
+                    className="flex items-center justify-center gap-2 bg-blue-900 text-white px-4 py-3 rounded-lg hover:bg-blue-800 transition-colors"
+                  >
+                    <FaPhoneAlt />
+                    Call Now: +91 91303 32780
+                  </a>
+                  <a
+                    href="mailto:contact@mayurbadrelaw.com"
+                    className="flex items-center justify-center gap-2 bg-white text-blue-900 border border-blue-900 px-4 py-3 rounded-lg hover:bg-blue-50 transition-colors"
+                  >
+                    <FaEnvelope />
+                    Email Us
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}
